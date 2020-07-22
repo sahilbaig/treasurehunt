@@ -13,6 +13,8 @@ import os
 app= Flask(__name__)
 app.config['SECRET_KEY']= 'MEOWMEOW'
 app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
+# app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///site.db'
+
 db=SQLAlchemy(app)
 bcrypt=Bcrypt(app)
 
@@ -42,8 +44,13 @@ class Questions(db.Model,UserMixin):
     def __repr__(self):
         return f"Questions('{self.quest},{self.answer}')" 
 
-admin.add_view(ModelView(User,db.session))
-admin.add_view(ModelView(Questions,db.session))
+class MyModelView(ModelView):
+    def is_accessible(self):
+        if current_user.username == '#@234ij':
+            return True
+
+admin.add_view(MyModelView(User,db.session))
+admin.add_view(MyModelView(Questions,db.session))
 
 @app.route("/")
 @app.route("/home")
