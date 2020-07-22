@@ -3,6 +3,8 @@ from forms import LoginForm, RegistrationForm , Answer
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager,UserMixin,login_user,current_user,logout_user
 from flask_bcrypt import Bcrypt
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 
 # Flask and Flask-SQLAlchemy initialization here
 
@@ -14,7 +16,10 @@ app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
 db=SQLAlchemy(app)
 bcrypt=Bcrypt(app)
 
+admin = Admin(app)
+
 login_manager=LoginManager(app)
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -36,6 +41,9 @@ class Questions(db.Model,UserMixin):
     
     def __repr__(self):
         return f"Questions('{self.quest},{self.answer}')" 
+
+admin.add_view(ModelView(User,db.session))
+admin.add_view(ModelView(Questions,db.session))
 
 @app.route("/")
 @app.route("/home")
