@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <title>Hunt</title>
+  </head>
+  <body style="background-image: url('static/try1.jpg');">
+
+    
+  <div class="navbar-fixed orange darken-2">
+    <nav class = "orange darken-2">
+      <div class="nav-wrapper container orange darken-2">
+        <a href="#!" class="brand-logo pull-left align-center"><img src="static/swiggy.png" width="40" height="auto" style="margin-top:6px;"></a>
+        <ul class="left hide-on-med-and-down pull-right">
+
+            <li style="margin-left:35px;"><a href="{{url_for('index')}}">Treasure Hunt</a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+          
+          {% if current_user.is_authenticated %}
+          <li><a href="{{url_for('questions',number=current_user.score+1)}}">Hey {{current_user.username}}</a></li>
+          <li><a href="{{url_for('leader')}}">Leaderboard</a></li>
+          <li><a href="{{url_for('logout')}}">Logout</a></li>
+          {%else%}
+          <li><a href="{{url_for('leader')}}">Leaderboard</a></li>
+          <li><a href="{{url_for('index')}}">Home</a></li>
+          <li><a href="{{url_for('register')}}">Sign Up</a></li>
+          {% endif %}
+          <li></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  {%if current_user.is_authenticated%}
+  <div class="container">
+    <a href="{{url_for('questions',number=current_user.score+1)}}" class="waves-effect waves-light btn-large" style="margin-left:700px;"><i class="material-icons left">cloud</i>Score:{{current_user.score}}</a>
+  </div>
+
+  {%endif%}
+  
+    <h4>{%block heading%}
+        {%endblock%}
+    </h4>
+
+     {%block content%}
+     {%endblock%}
+
+    
+  </body>
+</html>

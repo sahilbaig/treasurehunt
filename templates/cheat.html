@@ -1,0 +1,13 @@
+{%extends 'layout.html'%}
+{%block heading%}
+<div class='container card-panel'> 
+    <h4>
+      {{current_user.username}} , Cheating is not allowed !!!
+  </h4>
+ </div>
+{%endblock%}
+{%block content%}
+<div class="container">
+  <a href="{{url_for('questions',number=current_user.score+1)}}" class="waves-effect waves-light btn-large"><i class="material-icons left">cloud</i>Continue Your Hunt</a>
+  </div>
+{%endblock%}

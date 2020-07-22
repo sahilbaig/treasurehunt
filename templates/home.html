@@ -1,0 +1,32 @@
+{%extends "layout.html"%}
+{%block heading%}
+    <div class="container">LOGIN:</div>    
+{%endblock%}
+{%block content%}
+<div class="container">
+    <form method="POST" action="">
+        {{form.hidden_tag()}}
+            <div class="row card-panel ">
+                <div class="form-group  col-s6">
+                    {{form.username.label(class="form-control-label")}}
+                    {{form.username(class="form-control form-control-lg")}}
+
+                </div>
+
+                <div class="form-group col-s6">
+                    {{form.password.label(class="form-control-label")}}
+                    {{form.password(class="form-control form-control-lg")}}
+
+                </div>
+            </div>
+        <div>
+            {{form.submit(class="btn btn-outline-info")}}
+        </div>
+            Need an account?
+            <a href="{{url_for('register')}}">Sign Up
+            </a>
+        
+        
+    </form>
+</div>
+{%endblock%}
