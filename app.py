@@ -10,7 +10,9 @@ import os
 
 app= Flask(__name__)
 app.config['SECRET_KEY']= 'MEOWMEOW'
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///site.db'
+app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
+# app.config['SQLALCHEMY_DATABASE_URI']='postgres://jktnnqehrsgztd:48f26d91f45368ba8449510f71acb514463081846201f63d1d17cbd2fa3d50ce@ec2-52-0-155-79.compute-1.amazonaws.com:5432/dbaaq9sq4tntmc'
+
 
 db=SQLAlchemy(app)
 bcrypt=Bcrypt(app)
@@ -37,6 +39,7 @@ class Questions(db.Model,UserMixin):
     
     def __repr__(self):
         return f"Questions('{self.quest},{self.answer}')" 
+
 
 @app.route("/")
 @app.route("/home")
