@@ -106,7 +106,6 @@ def leader():
     score= User.query.order_by(User.score.desc())
     return render_template('leader.html',users=score)
 
-@click.command(name='create_table')
 @with_appcontext
 def create_tables():
     db.create_all()
