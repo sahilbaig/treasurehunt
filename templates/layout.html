@@ -9,6 +9,9 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Rakkas&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Trade+Winds&display=swap" rel="stylesheet">
 
 
     <!-- Compiled and minified JavaScript -->
@@ -16,7 +19,8 @@
 
     <title>Hunt</title>
   </head>
-  <body style="background-image: url('static/try1.jpg');">
+  <body style="background: url('static/background.jpg') center/cover no-repeat  fixed;">
+    
 
     
   <div class="navbar-fixed orange darken-2">
@@ -45,7 +49,7 @@
   </div>
   {%if current_user.is_authenticated%}
   <div class="container">
-    <a href="{{url_for('questions',number=current_user.score+1)}}" class="waves-effect waves-light btn-large" style="margin-left:700px;"><i class="material-icons left">cloud</i>Score:{{current_user.score}}</a>
+    <a href="{{url_for('questions',number=current_user.score+1)}}" class="waves-effect waves-light btn-large" style="margin-left:700px;margin-top:10px"><i class="material-icons left">whatshot</i>Score:{{current_user.score}}</a>
   </div>
 
   {%endif%}

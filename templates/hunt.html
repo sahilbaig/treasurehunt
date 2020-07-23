@@ -1,12 +1,12 @@
 {%extends 'layout.html'%}
-{%block heading%}
-{%endblock%}
-{%block content%}                               <!-- add Score part somewhere-->>
+{%block content%}     
+            
     
     <div class='container'> 
         <div class="row">
             <div class="col s6">
-                <h4>
+                <div class="row"></div>
+                <h4 class = "black-text" style = "font-family: Rakkas;margin-bottom: 30px;">
                     {{question.quest}}
                 </h4>
             </div> 
@@ -14,8 +14,8 @@
                 <img src="{{ image_file }}" width="400" height="250">
             </div>
         </div>
-    </div>
-    <div class="container">
+    
+    
         <form method="POST" action="">
             {{form.hidden_tag()}}
                 <div class="row card-panel col s6">
@@ -24,7 +24,7 @@
                         {{form.answer(class="form-control form-control-lg")}}
 
                      </div>
-                <div>
+                    </div>
             <div>
                 {{form.submit(class="btn btn-outline-info")}}
             </div>

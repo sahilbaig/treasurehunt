@@ -3,6 +3,8 @@
     <div class="container">LOGIN:</div>    
 {%endblock%}
 {%block content%}
+
+
 <div class="container">
     <form method="POST" action="">
         {{form.hidden_tag()}}
@@ -22,9 +24,17 @@
         <div>
             {{form.submit(class="btn btn-outline-info")}}
         </div>
-            Need an account?
-            <a href="{{url_for('register')}}">Sign Up
-            </a>
+        
+        <div style = "margin-top: 10px;">
+            <div class = "grey-text text-lighten-5">
+                Need an account?
+                <a href="{{url_for('register')}}" >Sign Up</a>
+            </div> 
+            
+        </div>
+            
+        
+            
         
         
     </form>
