@@ -57,20 +57,20 @@ def questions(number):
                 return render_template("hunt.html",question=show , form= form ,image_file=image_file, error="Not that easy, try something else")
     return render_template("hunt.html",question=show , form= form ,image_file=image_file)
 
-@app.route("/score")
-def score_zero():
-    current_user.score=0
-    db.session.commit()
-    return redirect(url_for('home'))
+# @app.route("/score")
+# def score_zero():
+#     current_user.score=0
+#     db.session.commit()
+#     return redirect(url_for('home'))
 
 @app.route("/logout")
 def logout():
     logout_user()
     return redirect(url_for('home'))
 
-@app.route("/see",methods=['GET'])
-def see():
-    return render_template('see.html')
+# @app.route("/see",methods=['GET'])
+# def see():
+#     return render_template('see.html')
 
 @app.route("/leader")
 def leader():
