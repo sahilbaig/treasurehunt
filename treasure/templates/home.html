@@ -1,6 +1,6 @@
 {%extends "layout.html"%}
 {%block heading%}
-    <div class="container">LOGIN:</div>    
+    <div class="container grey-text text-lighten-5">LOGIN:</div>    
 {%endblock%}
 {%block content%}
 
@@ -11,7 +11,16 @@
             <div class="row card-panel ">
                 <div class="form-group  col-s6">
                     {{form.username.label(class="form-control-label")}}
-                    {{form.username(class="form-control form-control-lg")}}
+                    {% if form.username.errors %}
+                    {{ form.username(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid">
+                        {% for error in form.username.errors %}
+                            <span class="red-text">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.username(class="form-control form-control-lg") }}
+                {% endif %}
 
                 </div>
 

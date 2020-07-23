@@ -1,6 +1,6 @@
 {%extends 'layout.html'%}
 {%block heading%}
-<div class ="container">
+<div class ="container grey-text text-lighten-5" style="margin-bottom:20px;">
     Sign Up
 </div>
 {%endblock%}
@@ -12,7 +12,17 @@
             <div class="row card-panel ">
                 <div class="form-group  col-s6">
                     {{form.username.label(class="form-control-label")}}
-                    {{form.username(class="form-control form-control-lg")}}
+                    {% if form.username.errors %}
+                        {{ form.username(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid">
+                                {% for error in form.username.errors %}
+                                    <span class="red-text">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.username(class="form-control form-control-lg") }}
+                    {% endif %}
+                
 
                 </div>
 
@@ -30,8 +40,13 @@
         <div>
             {{form.submit(class="btn btn-outline-info")}}
         </div>
-        Already have an Account?
-        <a href="{{url_for('home')}}">Login</a>
+        <div style = "margin-top: 10px;">
+            <div class = "grey-text text-lighten-5">
+                Already have an account?
+                <a href="{{url_for('home')}}" >Login</a>
+            </div> 
+            
+        </div>
         
     </form>
 </div>
