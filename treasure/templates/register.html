@@ -22,9 +22,22 @@
                         {% else %}
                             {{ form.username(class="form-control form-control-lg") }}
                     {% endif %}
-                
-
                 </div>
+
+                <div class="form-group  col-s6">
+                    {{form.email.label(class="form-control-label")}}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid">
+                                {% for error in form.email.errors %}
+                                    <span class="red-text">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.email(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
 
                 <div class="form-group col-s6">
                     {{form.password.label(class="form-control-label")}}

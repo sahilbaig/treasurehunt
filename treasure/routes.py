@@ -29,7 +29,7 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         hash_pass=bcrypt.generate_password_hash(form.password.data).decode('utf-8') #this part added
-        register_user=User(username=form.username.data , password=hash_pass)
+        register_user=User(username=form.username.data , password=hash_pass ,email=form.email.data)
         db.session.add(register_user)
         db.session.commit()
         return redirect(url_for('home'))
@@ -52,6 +52,10 @@ def questions(number):
                 current_user.score=current_user.score+1 
                 db.session.commit()    
                 return redirect(url_for('questions',number=show.id+1))
+            if form.answer.data=="swiggy" and number==4:
+                current_user.score=0
+                db.session.commit()
+                return render_template('index.html', trap="In case you have not noticed you fell right into my trap")
             else:
                 # return redirect(url_for('questions',number=show.id ))
                 return render_template("hunt.html",question=show , form= form ,image_file=image_file, error="Not that easy, try something else")
