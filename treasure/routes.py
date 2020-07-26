@@ -42,7 +42,7 @@ def questions(number):
     
     if number > 10:
         return redirect(url_for('leader'))
-        
+
     if (number-1)!=current_user.score:
         return render_template('cheat.html')
     else:
@@ -57,7 +57,7 @@ def questions(number):
             if form.answer.data=="swiggy" and number==4:
                 current_user.score=0
                 db.session.commit()
-                return render_template('index.html', trap="In case you have not noticed you fell right into my trap")
+                return render_template("trap.html")
             else:
                 # return redirect(url_for('questions',number=show.id ))
                 return render_template("hunt.html",question=show , form= form ,image_file=image_file, error="Not that easy, try something else")

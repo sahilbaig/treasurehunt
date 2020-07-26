@@ -1,0 +1,10 @@
+{%extends "layout.html"%}
+{%block heading%}
+    <div class="container grey-text text-lighten-5">
+        In Case you have not noticed, you fell right into my trap.
+    </div> 
+    <div class="container">
+        <a href="{{url_for('questions',number=current_user.score+1)}}" class="waves-effect waves-light btn-large"><i class="material-icons left">face</i>Go to Hunt</a>
+        </div>   
+{%endblock%}
+{%block content%}
