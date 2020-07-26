@@ -39,6 +39,10 @@ def register():
 def questions(number):
     if number==0:
         return redirect(url_for('questions',number=1))
+    
+    if number > 10:
+        return redirect(url_for('leader'))
+        
     if (number-1)!=current_user.score:
         return render_template('cheat.html')
     else:
